@@ -19,15 +19,33 @@ inputColor.addEventListener("input", function () {
 })
 
 colorButton.addEventListener("click", function () {
+    if (currentMode === 'rainbow') {
+        rainbowButton.classList.remove('selected-mode');
+    } else if (currentMode === 'eraser') {
+        eraserButton.classList.remove('selected-mode');
+    }
     currentMode = 'color';
+    colorButton.classList.add('selected-mode');
 })
 
 rainbowButton.addEventListener("click", function () {
+    if (currentMode === 'color') {
+        colorButton.classList.remove('selected-mode');
+    } else if (currentMode === 'eraser') {
+        eraserButton.classList.remove('selected-mode');
+    }
     currentMode = 'rainbow';
+    rainbowButton.classList.add('selected-mode');
 })
 
 eraserButton.addEventListener("click", function () {
+    if (currentMode === 'color') {
+        colorButton.classList.remove('selected-mode');
+    } else if (currentMode === 'rainbow') {
+        rainbowButton.classList.remove('selected-mode');
+    }
     currentMode = 'eraser';
+    eraserButton.classList.add('selected-mode');
 })
 
 inputSize.addEventListener("change", function () {
@@ -58,10 +76,10 @@ function setColor(e) {
         case 'eraser':
             currentColor = '#FFFFFF';
             break;
-        default:
-            currentColor = DEFAULT_COLOR;
     }
-    e.target.style.backgroundColor = currentColor;
+    if (currentMode) {
+        e.target.style.backgroundColor = currentColor;
+    }
 }
 
 function generateGrid(size) {
