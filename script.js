@@ -1,7 +1,3 @@
-const DEFAULT_SIZE = 16;
-const DEFAULT_COLOR = '#000000';
-const DEFAULT_MODE = 'color';
-
 let currentSize;
 let currentColor;
 let currentMode;
@@ -15,6 +11,9 @@ const inputColor = document.querySelector('#input-color');
 const inputSize = document.querySelector('#input-size');
 const outputSize = document.querySelector('#output-size');
 const clearButton = document.querySelector('#clear-button');
+
+currentMode = 'color';
+colorButton.classList.add('selected-mode');
 
 inputColor.addEventListener("input", function () {
     currentColor = inputColor.value;
