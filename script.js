@@ -4,17 +4,23 @@ let currentSize = DEFAULT_SIZE;
 let currentColor;
 
 const gridContainer = document.querySelector('#grid-container');
+const eraserButton = document.querySelector('#eraser-button');
 var inputColor = document.querySelector('#input-color');
 
 inputColor.addEventListener("input", function () {
     currentColor = inputColor.value;
 })
 
+eraserButton.addEventListener("click", function () {
+    currentColor = '#FFFFFF';
+})
+
 function setColor(e) {
     if (currentColor) {
         e.target.style.backgroundColor = currentColor;
     } else {
-        e.target.style.backgroundColor = '#000000';
+        currentColor = '#000000';
+        e.target.style.backgroundColor = currentColor;
     }
 }
 
