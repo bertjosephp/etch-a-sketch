@@ -1,11 +1,21 @@
 const DEFAULT_SIZE = 16;
 
 let currentSize = DEFAULT_SIZE;
+let currentColor;
 
 const gridContainer = document.querySelector('#grid-container');
+var inputColor = document.querySelector('#input-color');
+
+inputColor.addEventListener("input", function () {
+    currentColor = inputColor.value;
+})
 
 function setColor(e) {
-    e.target.style.backgroundColor = 'black';
+    if (currentColor) {
+        e.target.style.backgroundColor = currentColor;
+    } else {
+        e.target.style.backgroundColor = '#000000';
+    }
 }
 
 function generateGrid(size) {
