@@ -5,6 +5,7 @@ const DEFAULT_MODE = 'color';
 let currentSize;
 let currentColor;
 let currentMode;
+let isClicked = false;
 
 const gridContainer = document.querySelector('#grid-container');
 const colorButton = document.querySelector('#color-button');
@@ -63,22 +64,30 @@ function setOutputSizeText() {
 }
 
 function setColor(e) {
-    switch (currentMode) {
-        case 'color':
-            currentColor = inputColor.value;
-            break;
-        case 'rainbow':
-            let randomColorR = Math.floor(Math.random() * 256);
-            let randomColorG = Math.floor(Math.random() * 256);
-            let randomColorB = Math.floor(Math.random() * 256);
-            currentColor = `rgb(${randomColorR}, ${randomColorG}, ${randomColorB})`;
-            break;
-        case 'eraser':
-            currentColor = '#FFFFFF';
-            break;
+    if (e.type === 'mousedown') {
+        isClicked = true;
+    } else if (e.type === 'mouseup') {
+        isClicked = false;
     }
-    if (currentMode) {
-        e.target.style.backgroundColor = currentColor;
+    
+    if (isClicked) {
+        switch (currentMode) {
+            case 'color':
+                currentColor = inputColor.value;
+                break;
+            case 'rainbow':
+                let randomColorR = Math.floor(Math.random() * 256);
+                let randomColorG = Math.floor(Math.random() * 256);
+                let randomColorB = Math.floor(Math.random() * 256);
+                currentColor = `rgb(${randomColorR}, ${randomColorG}, ${randomColorB})`;
+                break;
+            case 'eraser':
+                currentColor = '#FFFFFF';
+                break;
+        }
+        if (currentMode) {
+            e.target.style.backgroundColor = currentColor;
+        }
     }
 }
 
@@ -91,6 +100,8 @@ function generateGrid(size) {
         gridElement.classList.add('grid-element');
         gridElement.textContent = '';
         gridElement.addEventListener('mouseover', setColor);
+        gridElement.addEventListener('mousedown', setColor);
+        gridElement.addEventListener('mouseup', setColor);
         gridContainer.appendChild(gridElement);
     }
 }
