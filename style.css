@@ -71,7 +71,6 @@ main {
 #color-button,
 #rainbow-button,
 #eraser-button {
-    border: 1px solid black;
     border-radius: 5px;
     height: 50px;
     width: 200px;
@@ -79,7 +78,16 @@ main {
     text-align: center;
     font-family: 'Quicksand';
     font-size: 20px;
+    box-shadow: 0 4px lightslategray;
 }
+
+#color-button:active,
+#rainbow-button:active,
+#eraser-button:active {
+    box-shadow: 0 1px lightslategray;
+    transform: translateY(3px);
+}
+
 
 #grid-size-label {
     margin-top: 45px;
@@ -95,4 +103,8 @@ main {
     font-family: 'Quicksand';
     font-size: 20px;
     margin-bottom: 20px;
+}
+
+.selected-mode {
+    background-color:#c8c8c8;
 }
