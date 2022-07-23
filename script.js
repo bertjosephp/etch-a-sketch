@@ -14,6 +14,7 @@ const eraserButton = document.querySelector('#eraser-button');
 const inputColor = document.querySelector('#input-color');
 const inputSize = document.querySelector('#input-size');
 const outputSize = document.querySelector('#output-size');
+const clearButton = document.querySelector('#clear-button');
 
 inputColor.addEventListener("input", function () {
     currentColor = inputColor.value;
@@ -47,6 +48,18 @@ eraserButton.addEventListener("click", function () {
     }
     currentMode = 'eraser';
     eraserButton.classList.add('selected-mode');
+})
+
+clearButton.addEventListener("click", function () {
+    if (currentMode === 'rainbow') {
+        rainbowButton.classList.remove('selected-mode');
+    } else if (currentMode === 'eraser') {
+        eraserButton.classList.remove('selected-mode');
+    }
+    currentMode = 'color';
+    colorButton.classList.add('selected-mode');
+    clearGrid();
+    loadGrid();
 })
 
 inputSize.addEventListener("change", function () {

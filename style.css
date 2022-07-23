@@ -47,7 +47,7 @@ main {
     justify-content: center;
     margin-right: 100px;
     font-family: 'Cabin Sketch';
-    height: 475px;
+    height: 575px;
     width: 275px;
     border: 2px solid slategray;
     border-radius: 10px;
@@ -69,9 +69,7 @@ main {
     font-size: 30px;
 }
 
-#color-button,
-#rainbow-button,
-#eraser-button {
+button {
     border-radius: 5px;
     height: 50px;
     width: 200px;
@@ -82,9 +80,11 @@ main {
     box-shadow: 0 4px lightslategray;
 }
 
-#color-button:active,
-#rainbow-button:active,
-#eraser-button:active {
+#clear-button {
+    margin-bottom: 30px;
+}
+
+button:active {
     box-shadow: 0 1px lightslategray;
     transform: translateY(3px);
 }
@@ -103,7 +103,7 @@ main {
 #output-size {
     font-family: 'Quicksand';
     font-size: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 65px;
 }
 
 .selected-mode {
