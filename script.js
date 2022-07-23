@@ -1,10 +1,14 @@
 const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = '#000000';
+const DEFAULT_MODE = 'color';
 
 let currentSize;
 let currentColor;
+let currentMode;
 
 const gridContainer = document.querySelector('#grid-container');
+const colorButton = document.querySelector('#color-button');
+const rainbowButton = document.querySelector('#rainbow-button');
 const eraserButton = document.querySelector('#eraser-button');
 const inputColor = document.querySelector('#input-color');
 const inputSize = document.querySelector('#input-size');
@@ -14,8 +18,16 @@ inputColor.addEventListener("input", function () {
     currentColor = inputColor.value;
 })
 
+colorButton.addEventListener("click", function () {
+    currentMode = 'color';
+})
+
+rainbowButton.addEventListener("click", function () {
+    currentMode = 'rainbow';
+})
+
 eraserButton.addEventListener("click", function () {
-    currentColor = '#FFFFFF';
+    currentMode = 'eraser';
 })
 
 inputSize.addEventListener("change", function () {
@@ -33,8 +45,21 @@ function setOutputSizeText() {
 }
 
 function setColor(e) {
-    if (!currentColor) {
-        currentColor = DEFAULT_COLOR;
+    switch (currentMode) {
+        case 'color':
+            currentColor = inputColor.value;
+            break;
+        case 'rainbow':
+            let randomColorR = Math.floor(Math.random() * 256);
+            let randomColorG = Math.floor(Math.random() * 256);
+            let randomColorB = Math.floor(Math.random() * 256);
+            currentColor = `rgb(${randomColorR}, ${randomColorG}, ${randomColorB})`;
+            break;
+        case 'eraser':
+            currentColor = '#FFFFFF';
+            break;
+        default:
+            currentColor = DEFAULT_COLOR;
     }
     e.target.style.backgroundColor = currentColor;
 }
