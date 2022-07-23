@@ -1,0 +1,24 @@
+header {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#grid-container {
+    display: grid;
+    height: 512px;
+    width: 512px;
+    border: 1px solid slategray;
+}
+
+.grid-element {
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.grid-element-hover {
+    background-color: lightslategray;
+}
